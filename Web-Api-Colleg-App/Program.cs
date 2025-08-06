@@ -1,11 +1,25 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Web_Api_Colleg_App.Data;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.RespectBrowserAcceptHeader = true; // Enables content negotiation
+})
+.AddXmlSerializerFormatters(); // Adds XML support
+
+builder.Services.AddDbContext<CollegeAppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers().AddNewtonsoftJson();
 
 var app = builder.Build();
 

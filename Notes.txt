@@ -1,0 +1,30 @@
+﻿Web-Api - College App
+1. Create College App With Inmemory Repository
+   - Create the api to get students/student
+   - Create Routes for all - Add Routing Constraints
+   - Response with status code
+   - Document - Response status code - ProducesResponceType(200)
+   - Create DTO
+   - Http Post - From Query|From Body
+   - CreatedAtRoute("", new {}, model)
+   - Model Validation - Modelstate - validation
+   - Custom Validation
+   - HttpPut
+   - HttpPatch - JsonPatch and NewtonSoftJson  - install these packges and register
+-----------
+        [
+          { "op": "replace", "path": "/StudentName", "value": "New Name" },
+          { "op": "replace", "path": "/Address", "value": "New .com" }
+        ]
+---------------------
+   - Content Negotioan
+   - Dependency Injection
+   - Loggers - Built-in, Serolog and Log4Net
+---------------------------------------------
+2. Create College App With Entity Framework
+   - Install Entity Framework - Core, Tools, SqlServer
+   - Create Data - Create Class for Data ex - Student
+                 - Create DbContext
+                 - Register DbContext
+                 - Read Connection string from AppSetting
+   - Add Migartion - Insert data
